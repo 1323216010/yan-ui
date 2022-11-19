@@ -2,10 +2,10 @@
 
 ```bash
 # 克隆项目
-git clone https://gitee.com/y_project/RuoYi-Vue
+git clone https://gitee.com/y_project/yan-ui
 
 # 进入项目目录
-cd ruoyi-ui
+cd yan-ui
 
 # 安装依赖
 npm install
