@@ -102,7 +102,6 @@
     <el-table v-loading="loading" :data="reviewList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
 
-      <el-table-column label="封面" align="center" prop="avatar" />
       <el-table-column label="标题" align="center" prop="title" />
       <el-table-column label="文件类型" align="center" prop="type" />
 
