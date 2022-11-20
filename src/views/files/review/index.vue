@@ -102,7 +102,7 @@
     <el-table v-loading="loading" :data="reviewList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
 
-
+      <el-table-column label="封面" align="center" prop="avatar" />
       <el-table-column label="标题" align="center" prop="title" />
       <el-table-column label="文件类型" align="center" prop="type" />
 
@@ -111,7 +111,7 @@
       <el-table-column label="星级" align="center" prop="star" />
       <el-table-column label="作者" align="center" prop="author" />
       <el-table-column label="详细信息" align="center" prop="info" />
-      <el-table-column label="封面" align="center" prop="avatar" />
+
       <el-table-column label="文件大小" align="center" prop="volume" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
