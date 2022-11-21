@@ -51,9 +51,20 @@
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
-    </el-form>
+      
+      <el-form-item>
+        <el-upload class="upload-demo" ref="upload" :action=fileUpload :on-preview="handlePreview" :file-list="fileList"
+          :auto-upload="false">
+          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
+          <div slot="tip" class="el-upload__tip"></div>
+        </el-upload>
+      </el-form-item>
+      
+      </el-form>
 
     <el-row :gutter="10" class="mb8">
+
       <el-col :span="1.5">
         <el-button
           type="primary"
@@ -102,7 +113,11 @@
     <el-table v-loading="loading" :data="reviewList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
 
-      <el-table-column label="标题" align="center" prop="title" />
+      <el-table-column label="标题" align="center" prop="title">
+        <template slot-scope="scope">
+            <el-button  size="mini" type="text" @click="fileReview(scope.row.url)">{{ scope.row.title }}</el-button>
+        </template>
+      </el-table-column>
       <el-table-column label="文件类型" align="center" prop="type" />
 
       <!-- <el-table-column label="所属用户" align="center" prop="userName" /> -->
@@ -175,6 +190,7 @@
 </template>
 
 <script>
+import variables from '@/utils/variables';
 import { listReview, getReview, delReview, addReview, updateReview } from "@/api/files/review";
 
 export default {
@@ -231,8 +247,22 @@ export default {
   },
   created() {
     this.getList();
+    this.fileUpload = variables.fileUpload
   },
   methods: {
+
+    async submitUpload() {
+      await this.$refs.upload.submit();
+      this.$refs.upload.clearFiles();
+      setTimeout(() =>{
+        this.getList();
+      }, 1000);
+    },
+
+    fileReview(url) {
+      window.open(variables.onlinePreview + url);
+    },
+
     /** 查询文件预览列表 */
     getList() {
       this.loading = true;
