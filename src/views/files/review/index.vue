@@ -55,8 +55,8 @@
       <el-form-item>
         <el-upload class="upload-demo" ref="upload" :action=fileUpload :on-preview="handlePreview" :file-list="fileList"
           :auto-upload="false">
-          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-          <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
+          <el-button slot="trigger" size="mini" plain type="primary" icon="el-icon-plus" v-hasPermi="['files:review:add']">选择文件</el-button>
+          <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
           <div slot="tip" class="el-upload__tip"></div>
         </el-upload>
       </el-form-item>
@@ -64,17 +64,6 @@
       </el-form>
 
     <el-row :gutter="10" class="mb8">
-
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['files:review:add']"
-        >新增</el-button>
-      </el-col>
       <el-col :span="1.5">
         <el-button
           type="success"

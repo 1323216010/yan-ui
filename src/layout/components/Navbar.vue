@@ -6,8 +6,13 @@
     <top-nav id="topmenu-container" class="topmenu-container" v-if="topNav"/>
 
     <div class="right-menu">
+      <a style="">        
+        <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ YYYYMMDD }}</span>
+        <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ HHMMSS }}</span>
+     </a>
+
       <template v-if="device!=='mobile'">
-        <search id="header-search" class="right-menu-item" />
+        <!-- <search id="header-search" class="right-menu-item" />
         
         <el-tooltip content="源码地址" effect="dark" placement="bottom">
           <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
@@ -15,7 +20,13 @@
 
         <el-tooltip content="文档地址" effect="dark" placement="bottom">
           <ruo-yi-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
+        <!-- <div class="right">
+          <ul class="infoUl">
+            <li>{{ YYYYMMDD }}</li>
+            <li>{{ HHMMSS }}</li>
+          </ul>
+        </div> -->
 
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
@@ -56,8 +67,15 @@ import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
 import RuoYiGit from '@/components/RuoYi/Git'
 import RuoYiDoc from '@/components/RuoYi/Doc'
+import moment from 'moment'
 
 export default {
+  data () {
+    return {
+      HHMMSS: moment().format('HH:mm:ss'),
+      YYYYMMDD: moment().format('MM月DD日'),
+    }
+  },
   components: {
     Breadcrumb,
     TopNav,
@@ -91,7 +109,17 @@ export default {
       }
     }
   },
+  mounted () {
+    this.setNowTime()
+  },
   methods: {
+    // 设置当前时间
+    setNowTime () {
+      setInterval(() => {
+        this.HHMMSS = moment().format('HH:mm:ss')
+      }, 500)
+    },
+
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
