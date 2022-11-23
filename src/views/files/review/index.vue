@@ -53,7 +53,7 @@
       </el-form-item>
       
       <el-form-item>
-        <el-upload class="upload-demo" ref="upload" :action=fileUpload :on-preview="handlePreview" :file-list="fileList"
+        <el-upload class="upload-demo" ref="upload" :action=fileUpload  :headers="headers" :file-list="fileList"
           :auto-upload="false">
           <el-button slot="trigger" size="mini" plain type="primary" icon="el-icon-plus" v-hasPermi="['files:review:add']">选择文件</el-button>
           <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
@@ -180,12 +180,17 @@
 
 <script>
 import variables from '@/utils/variables';
+import { getToken } from "@/utils/auth";
 import { listReview, getReview, delReview, addReview, updateReview } from "@/api/files/review";
 
 export default {
   name: "Review",
   data() {
     return {
+      fileList: [],
+      headers: {
+        Authorization: "Bearer " + getToken()
+      },
       // 遮罩层
       loading: true,
       // 选中数组
@@ -241,6 +246,7 @@ export default {
   methods: {
 
     async submitUpload() {
+      console.log(this.headers)
       await this.$refs.upload.submit();
       this.$refs.upload.clearFiles();
       setTimeout(() =>{
