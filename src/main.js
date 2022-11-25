@@ -40,6 +40,8 @@ import DictData from '@/components/DictData'
 
 import moment from 'moment'
 moment.locale('zh-cn')
+import VueParticles from 'vue-particles'  
+Vue.use(VueParticles)  
 
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
