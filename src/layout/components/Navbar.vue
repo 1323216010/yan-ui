@@ -8,6 +8,7 @@
     <div class="right-menu">
       <a style="">        
         <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ YYYYMMDD }}</span>
+        <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ weekDay }}</span>
         <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ HHMMSS }}</span>
      </a>
 
@@ -74,6 +75,7 @@ export default {
     return {
       HHMMSS: moment().format('HH:mm:ss'),
       YYYYMMDD: moment().format('MM月DD日'),
+      weekDay: moment().format('dddd')
     }
   },
   components: {
