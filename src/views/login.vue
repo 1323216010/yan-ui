@@ -146,7 +146,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 .login_container {
       background-image: linear-gradient(-180deg, #767485 0%, #0b3642 100%);
-      /* background-image: url("../assets/images/login-background.jpg"); */
+      background-image: url("../assets/images/original.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       height: 100%;
