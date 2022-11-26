@@ -96,7 +96,6 @@ export default {
   },
   methods: {
     toRegister() {
-      console.log('跳转')
       this.$router.push('/register')
     },
     getCode() {
