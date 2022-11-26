@@ -3,7 +3,7 @@
     <div class="login_box">
       <div class="login_form">
         <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-          <!-- <h3 class="title">小世界</h3> -->
+          <h3 class="title" style="color: #b4bbb4;">小世界</h3>
           <el-form-item prop="username">
             <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
               <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
@@ -24,7 +24,8 @@
               <img :src="codeUrl" @click="getCode" class="login-code-img" />
             </div>
           </el-form-item>
-          <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+          <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;color: #b4bbb4;">记住密码</el-checkbox>
+          <el-link style="font-size:0.86em;margin-left:12px;margin-bottom: 3px; color: #b4bbb4;" @click="toRegister">注册</el-link>
           <el-form-item style="width:100%;">
             <el-button :loading="loading" size="medium" type="primary" style="width:100%;background-color: rgba(0, 0, 0, 0.3);"
               @click.native.prevent="handleLogin" plain>
@@ -37,10 +38,8 @@
           </el-form-item>
         </el-form>
       </div>
-
     </div>
     <div id="particlesId"></div>
-
   </div>
 </template>
 
@@ -96,6 +95,10 @@ export default {
     particlesJS("particlesId", particlesConfig);
   },
   methods: {
+    toRegister() {
+      console.log('跳转')
+      this.$router.push('/register')
+    },
     getCode() {
       getCodeImg().then(res => {
         this.captchaEnabled = res.captchaEnabled === undefined ? true : res.captchaEnabled;

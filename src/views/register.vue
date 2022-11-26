@@ -1,7 +1,9 @@
 <template>
-  <div class="register">
-    <el-form ref="registerForm" :model="registerForm" :rules="registerRules" class="register-form">
-      <h3 class="title">若依后台管理系统</h3>
+  <div class="register_container">
+    <div class="register_box">
+      <div class="register_form">
+        <el-form ref="registerForm" :model="registerForm" :rules="registerRules" class="register-form">
+      <h3 class="title" style="color: #b4bbb4;">小世界</h3>
       <el-form-item prop="username">
         <el-input v-model="registerForm.username" type="text" auto-complete="off" placeholder="账号">
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
@@ -44,11 +46,11 @@
         </div>
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button
+        <el-button 
           :loading="loading"
           size="medium"
           type="primary"
-          style="width:100%;"
+          style="width:100%;background-color: rgba(0, 0, 0, 0.3);" plain
           @click.native.prevent="handleRegister"
         >
           <span v-if="!loading">注 册</span>
@@ -59,15 +61,16 @@
         </div>
       </el-form-item>
     </el-form>
-    <!--  底部  -->
-    <div class="el-register-footer">
-      <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
+      </div>
     </div>
+    <div id="particlesId"></div>
   </div>
 </template>
 
 <script>
 import { getCodeImg, register } from "@/api/login";
+import particles from 'particles.js'
+import particlesConfig from "@/api/particles/app.json"
 
 export default {
   name: "Register",
@@ -110,6 +113,9 @@ export default {
   created() {
     this.getCode();
   },
+  mounted() {
+    particlesJS("particlesId", particlesConfig);
+  },
   methods: {
     getCode() {
       getCodeImg().then(res => {
@@ -131,7 +137,7 @@ export default {
               type: 'success'
             }).then(() => {
               this.$router.push("/login");
-            }).catch(() => {});
+            }).catch(() => { });
           }).catch(() => {
             this.loading = false;
             if (this.captchaEnabled) {
@@ -145,7 +151,43 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
+.register_container {
+  background-image: linear-gradient(-180deg, #767485 0%, #0b3642 100%);
+  background-image: url("../assets/images/original.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.register_box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// .register-form {
+//   border-radius: 6px;
+//   background-color: rgba(0, 0, 0, 0.3);
+//   width: 400px;
+//   padding: 25px 25px 5px 25px;
+
+//   .el-input {
+//     height: 38px;
+
+//     input {
+//       height: 38px;
+//     }
+//   }
+
+//   .input-icon {
+//     height: 39px;
+//     width: 14px;
+//     margin-left: 2px;
+//   }
+// }
+
 .register {
   display: flex;
   justify-content: center;
@@ -154,6 +196,7 @@ export default {
   background-image: url("../assets/images/login-background.jpg");
   background-size: cover;
 }
+
 .title {
   margin: 0px auto 30px auto;
   text-align: center;
@@ -162,35 +205,42 @@ export default {
 
 .register-form {
   border-radius: 6px;
-  background: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
   width: 400px;
   padding: 25px 25px 5px 25px;
+
   .el-input {
     height: 38px;
+
     input {
       height: 38px;
     }
   }
+
   .input-icon {
     height: 39px;
     width: 14px;
     margin-left: 2px;
   }
 }
+
 .register-tip {
   font-size: 13px;
   text-align: center;
   color: #bfbfbf;
 }
+
 .register-code {
   width: 33%;
   height: 38px;
   float: right;
+
   img {
     cursor: pointer;
     vertical-align: middle;
   }
 }
+
 .el-register-footer {
   height: 40px;
   line-height: 40px;
@@ -203,6 +253,7 @@ export default {
   font-size: 12px;
   letter-spacing: 1px;
 }
+
 .register-code-img {
   height: 38px;
 }
