@@ -26,6 +26,15 @@ export function addReview(data) {
   })
 }
 
+// 查询天气
+export function getWeather() {
+  return request({
+    url: '/files/review/weather',
+    method: 'get'
+  })
+}
+
+
 // 修改文件预览
 export function updateReview(data) {
   return request({

@@ -2,15 +2,6 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
 
-      <el-form-item label="文件名" prop="name">
-        <el-input
-          v-model="queryParams.name"
-          placeholder="请输入文件名"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-
       <!-- <el-form-item label="所属用户" prop="userName">
         <el-input
           v-model="queryParams.userName"
@@ -20,10 +11,18 @@
         />
       </el-form-item> -->
 
-      <el-form-item label="标题" prop="title">
+      <el-form-item label="文件名" prop="title">
         <el-input
           v-model="queryParams.title"
-          placeholder="请输入标题"
+          placeholder="请输入文件名"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="格式" prop="type">
+        <el-input
+          v-model="queryParams.type"
+          placeholder="请输入格式"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -44,21 +43,9 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-
-
-
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
-      </el-form-item>
-      
-      <el-form-item>
-        <el-upload class="upload-demo" ref="upload" :action=fileUpload  :headers="headers" :file-list="fileList"
-          :auto-upload="false">
-          <el-button slot="trigger" size="mini" plain type="primary" icon="el-icon-plus" v-hasPermi="['files:review:add']">选择文件</el-button>
-          <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
-          <div slot="tip" class="el-upload__tip"></div>
-        </el-upload>
       </el-form-item>
       
       </el-form>
@@ -96,26 +83,32 @@
           v-hasPermi="['files:review:export']"
         >导出</el-button>
       </el-col>
+      <el-upload class="upload-demo" ref="upload" :action=fileUpload  :headers="headers" :file-list="fileList"
+          :auto-upload="false">
+          <el-button style="margin-left: 6px;" slot="trigger" size="mini" plain type="primary" icon="el-icon-plus" v-hasPermi="['files:review:add']">选择文件</el-button>
+          <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
+          <div slot="tip" class="el-upload__tip"></div>
+      </el-upload>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="reviewList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
 
-      <el-table-column label="标题" align="center" prop="title">
+      <el-table-column label="文件名(点击预览)" align="center" prop="title">
         <template slot-scope="scope">
             <el-button  size="mini" type="text" @click="fileReview(scope.row.url)">{{ scope.row.title }}</el-button>
         </template>
       </el-table-column>
-      <el-table-column label="文件类型" align="center" prop="type" />
+      <el-table-column label="格式" align="center" prop="type" />
 
       <!-- <el-table-column label="所属用户" align="center" prop="userName" /> -->
 
       <el-table-column label="星级" align="center" prop="star" />
       <el-table-column label="作者" align="center" prop="author" />
-      <el-table-column label="详细信息" align="center" prop="info" />
+      <el-table-column label="详情" align="center" prop="info" />
 
-      <el-table-column label="文件大小" align="center" prop="volume" />
+      <el-table-column label="大小" align="center" prop="volume" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button

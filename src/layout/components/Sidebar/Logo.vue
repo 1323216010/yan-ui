@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '工具集',
+      title: '小世界',
       logo: logoImg
     }
   }

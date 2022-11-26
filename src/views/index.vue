@@ -2,7 +2,7 @@
   <div class="login_container">
     <div class="login_box">
       <div class="login_form">
-
+        
       </div>
     </div>
     <vue-particles color="#409EFF" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4"

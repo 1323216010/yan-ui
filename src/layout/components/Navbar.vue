@@ -6,7 +6,8 @@
     <top-nav id="topmenu-container" class="topmenu-container" v-if="topNav"/>
 
     <div class="right-menu">
-      <a style="">        
+      <a style="">
+        <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ weather.city }} {{weather.weather}} {{weather.temperature}}℃</span>      
         <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ YYYYMMDD }}</span>
         <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ weekDay }}</span>
         <span style="color: #666;margin-right: 10px;margin-top: 5px;float: left;">{{ HHMMSS }}</span>
@@ -69,13 +70,15 @@ import Search from '@/components/HeaderSearch'
 import RuoYiGit from '@/components/RuoYi/Git'
 import RuoYiDoc from '@/components/RuoYi/Doc'
 import moment from 'moment'
+import { getWeather } from "@/api/files/review";
 
 export default {
   data () {
     return {
       HHMMSS: moment().format('HH:mm:ss'),
       YYYYMMDD: moment().format('MM月DD日'),
-      weekDay: moment().format('dddd')
+      weekDay: moment().format('dddd'),
+      weather: {}
     }
   },
   components: {
@@ -113,6 +116,10 @@ export default {
   },
   mounted () {
     this.setNowTime()
+    getWeather().then(res => {
+      this.weather = res.data[0]
+      console.log(this.weather)
+    })
   },
   methods: {
     // 设置当前时间
