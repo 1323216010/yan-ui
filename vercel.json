@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "process.env.VUE_APP_BASE_API/:match*",
+        "destination": "http://139.9.92.208:3000/:match*"
+      }
+    ]
+  }
+  
