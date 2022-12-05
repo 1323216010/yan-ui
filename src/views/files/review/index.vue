@@ -235,6 +235,7 @@ export default {
   created() {
     this.getList();
     this.fileUpload = variables.fileUpload
+    console.log(axios.defaults.baseURL)
   },
   methods: {
 
