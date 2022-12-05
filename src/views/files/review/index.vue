@@ -83,7 +83,7 @@
           v-hasPermi="['files:review:export']"
         >导出</el-button>
       </el-col>
-      <el-upload class="upload-demo" ref="upload" :action=fileUpload  :headers="headers" :file-list="fileList"
+      <el-upload class="upload-demo" ref="upload" :action=fileUpload  :headers="headers" :http-request="upload" :file-list="fileList"
           :auto-upload="false">
           <el-button style="margin-left: 6px;" slot="trigger" size="mini" plain type="primary" icon="el-icon-plus" v-hasPermi="['files:review:add']">选择文件</el-button>
           <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" icon="el-icon-upload">上传</el-button>
@@ -174,7 +174,7 @@
 <script>
 import variables from '@/utils/variables';
 import { getToken } from "@/utils/auth";
-import { listReview, getReview, delReview, addReview, updateReview } from "@/api/files/review";
+import { listReview, getReview, delReview, addReview, updateReview, fileUpload} from "@/api/files/review";
 import request from '@/utils/request'
 
 export default {
@@ -239,7 +239,15 @@ export default {
     console.log(request.default.baseURL);
   },
   methods: {
-
+    upload(param) {
+      const formData = new FormData()
+      formData.append('file', param.file)
+      fileUpload(formData).then(res => {
+      console.log('上传成功')
+      }).catch(response => {
+      console.log('上传失败')
+      })
+    },
     async submitUpload() {
       await this.$refs.upload.submit();
       this.$refs.upload.clearFiles();

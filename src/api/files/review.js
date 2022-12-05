@@ -51,3 +51,12 @@ export function delReview(id) {
     method: 'delete'
   })
 }
+
+// 上传文件
+export function fileUpload(data) {
+  return request({
+    url: '/files/review/fileUpload',
+    method: 'post',
+    data: data
+  })
+}
