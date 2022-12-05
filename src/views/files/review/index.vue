@@ -175,6 +175,7 @@
 import variables from '@/utils/variables';
 import { getToken } from "@/utils/auth";
 import { listReview, getReview, delReview, addReview, updateReview } from "@/api/files/review";
+import request from '@/utils/request'
 
 export default {
   name: "Review",
@@ -234,8 +235,8 @@ export default {
   },
   created() {
     this.getList();
-    this.fileUpload = variables.fileUpload
-    console.log(axios.defaults.baseURL)
+    this.fileUpload = variables.fileUpload;
+    console.log(request.default.baseURL);
   },
   methods: {
 

@@ -118,7 +118,6 @@ export default {
     this.setNowTime()
     getWeather().then(res => {
       this.weather = res.data[0]
-      console.log(this.weather)
     })
   },
   methods: {
