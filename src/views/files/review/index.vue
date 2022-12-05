@@ -239,7 +239,6 @@ export default {
   methods: {
 
     async submitUpload() {
-      console.log(this.headers)
       await this.$refs.upload.submit();
       this.$refs.upload.clearFiles();
       setTimeout(() =>{

@@ -5,7 +5,7 @@
   const downloadFile = kkIp + '/demo/'
 
   // const fileUpload = kkIp + '/fileUpload';
-  const fileUpload = 'http://localhost:8080/files/review' + '/fileUpload';
+  const fileUpload = 'http://111.230.194.21:8080/files/review' + '/fileUpload';
 
   // const deleteFile = kkIp + '/deleteFile';
   const deleteFile = 'http://111.230.194.21:8333/admin/vod/file' + '/deleteFile';
