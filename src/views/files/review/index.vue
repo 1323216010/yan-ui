@@ -105,7 +105,7 @@
       <!-- <el-table-column label="所属用户" align="center" prop="userName" /> -->
 
       <el-table-column label="星级" align="center" prop="star" />
-      <el-table-column label="作者" align="center" prop="author" />
+      <el-table-column label="所属用户" align="center" prop="userName" />
       <el-table-column label="详情" align="center" prop="info" />
 
       <el-table-column label="大小" align="center" prop="volume" />
