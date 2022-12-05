@@ -1,8 +1,8 @@
 {
     "rewrites": [
       {
-        "source": "/prod-api/:path*/",
-        "destination": "http://139.9.92.208:3000/:path*/"
+        "source": "/api/:match*",
+        "destination": "http://111.230.194.21:8080/:match*"
       }
     ]
   }
