@@ -59,3 +59,12 @@ export function getCodeImg() {
     timeout: 20000
   })
 }
+
+// 单点登录
+export function singleSignOn (data) {
+  return request({
+    url: '/auth/singleSignOn/getToken',
+    method: 'post',
+    data
+  })
+}
