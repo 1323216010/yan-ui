@@ -63,7 +63,7 @@ export function getCodeImg() {
 // 单点登录
 export function singleSignOn (data) {
   return request({
-    url: '/auth/singleSignOn/getToken',
+    url: '/auth/sso/getToken',
     method: 'post',
     data
   })

@@ -52,8 +52,8 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/single_point',
-    component: () => import('@/views/single_point'),
+    path: '/sso',
+    component: () => import('@/views/sso'),
     hidden: true
   },
   {
