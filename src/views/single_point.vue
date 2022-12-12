@@ -47,7 +47,7 @@
         text: '登陆验证中，请稍后'
       })
   
-      var query = qs.parse(this.sxwhDecodeURIComponent(location.search.substring(1)))
+      var query = qs.parse(location.search.substring(1))
   
       if (query.token) {
         console.log(query.token)
