@@ -26,7 +26,7 @@
   
   <script>
   import { setToken } from '@/utils/auth'
-  import { singleSignOn } from '@/api/login'
+  import { sso } from '@/api/login'
   import qs from 'qs'
   
   export default {
