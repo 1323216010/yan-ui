@@ -176,6 +176,7 @@ import variables from '@/utils/variables';
 import { getToken } from "@/utils/auth";
 import { listReview, getReview, delReview, addReview, updateReview, fileUpload} from "@/api/files/review";
 import request from '@/utils/request'
+import { Base64 } from 'js-base64'
 
 export default {
   name: "Review",
