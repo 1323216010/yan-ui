@@ -40,7 +40,7 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar" class="user-avatar">
+          <img :src="userStore.avatar" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -70,7 +70,11 @@ import Search from '@/components/HeaderSearch'
 import RuoYiGit from '@/components/RuoYi/Git'
 import RuoYiDoc from '@/components/RuoYi/Doc'
 import moment from 'moment'
-import { getWeather } from "@/api/files/review";
+import { getWeather } from "@/api/files/review"
+
+import user from '@/store/modules/user'
+const userStore = user()
+
 
 export default {
   data () {
