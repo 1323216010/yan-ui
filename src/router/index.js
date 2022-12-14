@@ -88,7 +88,7 @@ export const constantRoutes = [
         path: '/files/review',
         component: () => import('@/views/files/review/index'),
         name: 'Index',
-        meta: { title: '初始页', icon: 'dashboard', affix: true }
+        meta: { title: '文件预览', icon: 'dashboard', affix: true }
       }
     ]
   },
