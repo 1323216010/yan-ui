@@ -86,9 +86,9 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/redirect'),
+        component: () => import('@/views/index'),
         name: 'Index',
-        meta: { title: '重定向页', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'dashboard', affix: true }
       }
     ]
   },
