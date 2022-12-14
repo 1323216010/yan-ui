@@ -83,6 +83,7 @@ export const constantRoutes = [
     path: '',
     component: Layout,
     redirect: '/files/review',
+    component: () => import('@/views/files/review/index'),
 /*     children: [
       {
         path: '/files/review',
