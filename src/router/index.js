@@ -66,6 +66,19 @@ export const constantRoutes = [
     component: () => import('@/views/error/401'),
     hidden: true
   },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/files/review/index'),
+        name: 'Index',
+        meta: { title: '文件预览', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
 /*   {
     path: '',
     component: Layout,
@@ -79,19 +92,19 @@ export const constantRoutes = [
       }
     ]
   }, */
-  {
+/*   {
     path: '',
     component: Layout,
     redirect: '/files/review',
-/*     children: [
+    children: [
       {
         path: '/files/review',
         component: () => import('@/views/files/review/index'),
         name: 'Index',
         meta: { title: '文件预览', icon: 'dashboard', affix: true }
       }
-    ] */
-  },
+    ]
+  }, */
   {
     path: '/user',
     component: Layout,
