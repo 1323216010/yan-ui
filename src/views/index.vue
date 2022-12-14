@@ -22,7 +22,7 @@ data() {
   }
 },
 created () {
-  this.$router.push('/files/review')
+
 },
 methods: {
   toFileReview() {
