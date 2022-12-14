@@ -80,17 +80,17 @@ export const constantRoutes = [
     ]
   }, */
   {
-    path: '/',
+    path: '',
     component: Layout,
     redirect: '/files/review',
-    children: [
+/*     children: [
       {
         path: '/files/review',
         component: () => import('@/views/files/review/index'),
         name: 'Index',
         meta: { title: '文件预览', icon: 'dashboard', affix: true }
       }
-    ]
+    ] */
   },
   {
     path: '/user',
