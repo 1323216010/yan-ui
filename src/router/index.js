@@ -79,7 +79,7 @@ export const constantRoutes = [
       }
     ]
   }, */
-/*   {
+  {
     path: '',
     component: Layout,
     redirect: 'index',
@@ -91,20 +91,20 @@ export const constantRoutes = [
         meta: { title: '首页', icon: 'dashboard', affix: true }
       }
     ]
-  }, */
-  {
+  },
+/*   {
     path: '',
     component: Layout,
     redirect: '/files/review',
     children: [
       {
-        path: '/files/review',
+        path: 'review',
         component: () => import('@/views/files/review/index'),
         name: 'Index',
         meta: { title: '文件预览', icon: 'dashboard', affix: true }
       }
     ]
-  },
+  }, */
   {
     path: '/user',
     component: Layout,

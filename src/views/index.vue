@@ -21,6 +21,9 @@ data() {
 
   }
 },
+created () {
+  this.$router.push('/files/review')
+},
 methods: {
   toFileReview() {
     this.$router.push('/files/review')
