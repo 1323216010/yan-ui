@@ -83,15 +83,14 @@ export const constantRoutes = [
     path: '',
     component: Layout,
     redirect: '/files/review',
-    component: () => import('@/views/files/review/index'),
-/*     children: [
+    children: [
       {
         path: '/files/review',
         component: () => import('@/views/files/review/index'),
         name: 'Index',
-        meta: { title: '文件预览', icon: 'dashboard', affix: true }
+        meta: { title: '文件预览', /* icon: 'dashboard', */ affix: true }
       }
-    ] */
+    ]
   },
   {
     path: '/user',
