@@ -80,7 +80,7 @@ export const constantRoutes = [
     ]
   }, */
   {
-    path: '',
+    path: '/',
     component: Layout,
     redirect: '/files/review',
     children: [
