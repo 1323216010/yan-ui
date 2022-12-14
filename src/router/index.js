@@ -66,7 +66,7 @@ export const constantRoutes = [
     component: () => import('@/views/error/401'),
     hidden: true
   },
-  {
+/*   {
     path: '',
     component: Layout,
     redirect: 'index',
@@ -76,6 +76,19 @@ export const constantRoutes = [
         component: () => import('@/views/index'),
         name: 'Index',
         meta: { title: '首页', icon: 'dashboard', affix: true }
+      }
+    ]
+  }, */
+  {
+    path: '',
+    component: Layout,
+    redirect: '/files/review',
+    children: [
+      {
+        path: '/files/review',
+        component: () => import('@/views/files/review/index'),
+        name: 'Index',
+        meta: { title: '初始页', icon: 'dashboard', affix: true }
       }
     ]
   },
