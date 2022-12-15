@@ -26,22 +26,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" 侧边栏一级图标" prop="icon">
-        <el-input
-          v-model="queryParams.icon"
-          placeholder="请输入 侧边栏一级图标"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="显示顺序" prop="orderNum">
-        <el-input
-          v-model="queryParams.orderNum"
-          placeholder="请输入显示顺序"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
 
       <el-form-item>
 	    <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -127,12 +111,6 @@
         </el-form-item>
         <el-form-item label="显示顺序" prop="orderNum">
           <el-input v-model="form.orderNum" placeholder="请输入显示顺序" />
-        </el-form-item>
-        <el-form-item label="${comment}" prop="webId">
-          <el-input v-model="form.webId" placeholder="请输入${comment}" />
-        </el-form-item>
-        <el-form-item label="删除标志" prop="delFlag">
-          <el-input v-model="form.delFlag" placeholder="请输入删除标志" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
