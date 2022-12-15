@@ -80,6 +80,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/nav',
+    component: Layout,
+    redirect: 'nav',
+    children: [
+      {
+        path: 'nav',
+        component: () => import('@/views/nav/index'),
+        name: 'Nav',
+        meta: { title: '导航树', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     hidden: true,
