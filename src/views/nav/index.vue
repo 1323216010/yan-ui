@@ -1,14 +1,7 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="父id" prop="parentId">
-        <el-input
-          v-model="queryParams.parentId"
-          placeholder="请输入父id"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label=" 侧边栏一级名称" prop="name">
         <el-input
           v-model="queryParams.name"
@@ -49,14 +42,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="webId">
-        <el-input
-          v-model="queryParams.webId"
-          placeholder="请输入${comment}"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item>
 	    <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -94,14 +80,9 @@
       :default-expand-all="isExpandAll"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column label="父id" prop="parentId" />
       <el-table-column label=" 侧边栏一级名称" align="center" prop="name" />
-      <el-table-column label="父名称" align="center" prop="parentName" />
-      <el-table-column label=" 侧边栏一级名称" align="center" prop="enName" />
       <el-table-column label=" 侧边栏一级图标" align="center" prop="icon" />
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
-      <el-table-column label="${comment}" align="center" prop="webId" />
-      <el-table-column label="状态" align="center" prop="status" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
