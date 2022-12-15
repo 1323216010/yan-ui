@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import { listNav, getNav, delNav, addNav, updateNav } from "@/api/files/nav";
+import { listNav, getNav, delNav, addNav, updateNav } from "@/api/nav";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
