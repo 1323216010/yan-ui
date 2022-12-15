@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="父id" prop="parentId">
@@ -127,10 +127,10 @@
           >删除</el-button>
         </template>
       </el-table-column>
-    </el-table>
+    </el-table> -->
 
     <!-- 添加或修改导航树对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
+<!--     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="父id" prop="parentId">
           <treeselect v-model="form.parentId" :options="navOptions" :normalizer="normalizer" placeholder="请选择父id" />
@@ -161,8 +161,8 @@
     </el-dialog>
   </div>
 </template>
-
-<script>
+ -->
+<!-- <script>
 import { listNav, getNav, delNav, addNav, updateNav } from "@/api/nav";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
@@ -343,3 +343,4 @@ export default {
   }
 };
 </script>
+ -->
