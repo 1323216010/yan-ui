@@ -18,14 +18,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label=" 侧边栏一级名称" prop="enName">
+      <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
         <el-input
           v-model="queryParams.enName"
           placeholder="请输入 侧边栏一级名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item>
 	    <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -103,9 +103,9 @@
         <el-form-item label=" 侧边栏一级名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入 侧边栏一级名称" />
         </el-form-item>
-        <el-form-item label=" 侧边栏一级名称" prop="enName">
+        <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
           <el-input v-model="form.enName" placeholder="请输入 侧边栏一级名称" />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label=" 侧边栏一级图标" prop="icon">
           <el-input v-model="form.icon" placeholder="请输入 侧边栏一级图标" />
         </el-form-item>
