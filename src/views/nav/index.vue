@@ -64,8 +64,14 @@
       :default-expand-all="isExpandAll"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column label=" 侧边栏一级名称" align="center" prop="name" />
-      <el-table-column label=" 侧边栏一级图标" align="center" prop="icon" />
+      <el-table-column label="名称" align="center" prop="name">
+        <template slot-scope="scope">
+            <el-button  size="mini" type="text" @click="fileReview(scope.row.url)" v-if="scope.row.icon == 0">{{ scope.row.name }}</el-button>
+            <template v-if="scope.row.icon != 0">{{ scope.row.name }}</template>
+        </template>
+      </el-table-column>
+      <el-table-column label=" 侧边栏一级图标" align="center" prop="icon"/>
+      
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
