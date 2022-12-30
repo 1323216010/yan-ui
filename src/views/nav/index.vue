@@ -2,13 +2,19 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
 
-      <el-form-item label=" 名称" prop="name">
+      <el-form-item label="名称" prop="name">
         <el-input
           v-model="queryParams.name"
           placeholder="请输入名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
+      </el-form-item>
+      <el-form-item label="叶子" prop="isUrl">
+        <el-select v-model="queryParams.isUrl" placeholder="请选择" clearable size="small">
+          <!-- <el-option label="请选择字典生成" value="" /> -->
+          <el-option v-for="dict in isUrlOptions" :key="dict.dictValue" :label="dict.dictLabel" :value="dict.dictValue" />
+        </el-select>
       </el-form-item>
 
       <el-form-item>
@@ -102,7 +108,7 @@
         <el-form-item label="简介" prop="brief">
           <el-input v-model="form.brief" placeholder="请输入简介" />
         </el-form-item>
-        <el-form-item label="是否为网址" prop="isUrl">
+        <el-form-item label="叶子" prop="isUrl">
           <el-select v-model="form.isUrl"  clearable size="small">
           <el-option v-for="dict in isUrlOptions" :key="dict.dictValue" :label="dict.dictLabel" :value="dict.dictValue" />
         </el-select>
@@ -162,6 +168,7 @@ export default {
         orderNum: null,
         webId: null,
         status: null,
+        isUrl: null,
       },
       // 表单参数
       form: {},
