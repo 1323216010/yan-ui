@@ -10,6 +10,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="分类" prop="classification">
+        <el-input
+          v-model="queryParams.classification"
+          placeholder="请输入分类"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="叶子" prop="isUrl">
         <el-select v-model="queryParams.isUrl" placeholder="请选择" clearable size="small">
           <!-- <el-option label="请选择字典生成" value="" /> -->
@@ -62,6 +70,7 @@
       </el-table-column>
       <!-- <el-table-column label="图标" align="center" prop="icon"/> -->
       <el-table-column label="简介" align="center" prop="brief"/>
+      <el-table-column label="分类" align="center" prop="classification" />
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -116,6 +125,9 @@
         <el-form-item label="网址" prop="url">
           <el-input v-model="form.url" placeholder="请输入网址" />
         </el-form-item>
+        <el-form-item label="分类" prop="classification">
+          <el-input v-model="form.classification" placeholder="请输入分类" />
+        </el-form-item>
         <el-form-item label="显示顺序" prop="orderNum">
           <el-input v-model="form.orderNum" placeholder="请输入显示顺序" />
         </el-form-item>
@@ -169,6 +181,7 @@ export default {
         webId: null,
         status: null,
         isUrl: null,
+        classification: null,
       },
       // 表单参数
       form: {},
