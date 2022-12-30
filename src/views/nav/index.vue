@@ -11,15 +11,6 @@
         />
       </el-form-item>
 
-      <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
-        <el-input
-          v-model="queryParams.enName"
-          placeholder="请输入 侧边栏一级名称"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item> -->
-
       <el-form-item>
 	    <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -64,7 +55,7 @@
         </template>
       </el-table-column>
       <el-table-column label="图标" align="center" prop="icon"/>
-      
+      <el-table-column label="简介" align="center" prop="brief"/>
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -99,14 +90,25 @@
         <el-form-item label="父id" prop="parentId">
           <treeselect v-model="form.parentId" :options="navOptions" :normalizer="normalizer" placeholder="请选择父id" />
         </el-form-item>
-        <el-form-item label=" 侧边栏一级名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入 侧边栏一级名称" />
+        <el-form-item label=" 名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入名称" />
         </el-form-item>
         <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
           <el-input v-model="form.enName" placeholder="请输入 侧边栏一级名称" />
         </el-form-item> -->
-        <el-form-item label=" 侧边栏一级图标" prop="icon">
-          <el-input v-model="form.icon" placeholder="请输入 侧边栏一级图标" />
+        <el-form-item label=" 图标" prop="icon">
+          <el-input v-model="form.icon" placeholder="请输入图标" />
+        </el-form-item>
+        <el-form-item label="简介" prop="brief">
+          <el-input v-model="form.brief" placeholder="请输入简介" />
+        </el-form-item>
+        <el-form-item label="是否为网址" prop="isUrl">
+          <el-select v-model="form.isUrl"  clearable size="small">
+          <el-option v-for="dict in isUrlOptions" :key="dict.dictValue" :label="dict.dictLabel" :value="dict.dictValue" />
+        </el-select>
+        </el-form-item>
+        <el-form-item label="网址" prop="url">
+          <el-input v-model="form.url" placeholder="请输入网址" />
         </el-form-item>
         <el-form-item label="显示顺序" prop="orderNum">
           <el-input v-model="form.orderNum" placeholder="请输入显示顺序" />
@@ -124,6 +126,7 @@
 import { listNav, getNav, delNav, addNav, updateNav } from "@/api/nav/nav";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
+import { getDicts } from "@/api/system/dict/data";
 
 export default {
   name: "Nav",
@@ -132,6 +135,7 @@ export default {
   },
   data() {
     return {
+      isUrlOptions: [],
       // 遮罩层
       loading: true,
       // 显示搜索条件
@@ -171,6 +175,9 @@ export default {
   },
   created() {
     this.getList();
+    getDicts("is_url").then(response => {
+    this.isUrlOptions = response.data;
+  });
   },
   methods: {
     redirect(url) {
@@ -266,8 +273,13 @@ export default {
       if (row != null) {
         this.form.parentId = row.id;
       }
+      console.log(row.id);
+      console.log('233');
+      console.log(row);
       getNav(row.id).then(response => {
+        console.log(this.form);
         this.form = response.data;
+        console.log(this.form);
         this.open = true;
         this.title = "修改导航树";
       });
