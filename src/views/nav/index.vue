@@ -93,7 +93,7 @@
     <!-- 添加或修改导航树对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="父id" prop="parentId">
+        <el-form-item label="父节点" prop="parentId">
           <treeselect v-model="form.parentId" :options="navOptions" :normalizer="normalizer" placeholder="请选择父id" />
         </el-form-item>
         <el-form-item label=" 名称" prop="name">
