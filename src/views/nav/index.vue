@@ -10,14 +10,11 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="分类" prop="classification">
-        <el-input
-          v-model="queryParams.classification"
-          placeholder="请输入分类"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+      <el-form-item label="分类" class="demo-autocomplete">
+        <template>
+          <el-autocomplete v-model="queryParams.classification" :fetch-suggestions="querySearch" placeholder="请输入分类" clearable @keyup.enter.native="handleQuery"></el-autocomplete>
+        </template>
+      </el-form-item >
       <el-form-item label="叶子" prop="isUrl">
         <el-select v-model="queryParams.isUrl" placeholder="请选择" clearable size="small">
           <!-- <el-option label="请选择字典生成" value="" /> -->
@@ -153,6 +150,8 @@ export default {
   },
   data() {
     return {
+      restaurants: [],
+      state1: '',
       isUrlOptions: [],
       // 遮罩层
       loading: true,
@@ -167,7 +166,7 @@ export default {
       // 是否显示弹出层
       open: false,
       // 是否展开，默认全部展开
-      isExpandAll: true,
+      isExpandAll: false,
       // 重新渲染表格状态
       refreshTable: true,
       // 查询参数
@@ -196,10 +195,31 @@ export default {
   created() {
     this.getList();
     getDicts("is_url").then(response => {
-    this.isUrlOptions = response.data;
-  });
+      this.isUrlOptions = response.data;
+    });
+  },
+  mounted() {
+    this.restaurants = this.loadAll();
   },
   methods: {
+    querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [
+          { "value": "工具"},
+          { "value": "搜索" },
+        ];
+      },
+
     redirect(url) {
       window.open(url);
     },
