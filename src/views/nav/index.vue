@@ -2,22 +2,15 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
 
-      <el-form-item label=" 侧边栏一级名称" prop="name">
+      <el-form-item label=" 名称" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入 侧边栏一级名称"
+          placeholder="请输入名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="父名称" prop="parentName">
-        <el-input
-          v-model="queryParams.parentName"
-          placeholder="请输入父名称"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
         <el-input
           v-model="queryParams.enName"
@@ -66,11 +59,11 @@
     >
       <el-table-column label="名称" align="center" prop="name">
         <template slot-scope="scope">
-            <el-button  size="mini" type="text" @click="fileReview(scope.row.url)" v-if="scope.row.icon == 0">{{ scope.row.name }}</el-button>
-            <template v-if="scope.row.icon != 0">{{ scope.row.name }}</template>
+            <el-button  size="mini" type="text" @click="redirect(scope.row.url)" v-if="scope.row.isUrl == 0">{{ scope.row.name }}</el-button>
+            <template v-if="scope.row.isUrl != 0">{{ scope.row.name }}</template>
         </template>
       </el-table-column>
-      <el-table-column label=" 侧边栏一级图标" align="center" prop="icon"/>
+      <el-table-column label="图标" align="center" prop="icon"/>
       
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -180,6 +173,9 @@ export default {
     this.getList();
   },
   methods: {
+    redirect(url) {
+      window.open(url);
+    },
     /** 查询导航树列表 */
     getList() {
       this.loading = true;
