@@ -10,7 +10,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="分类" class="demo-autocomplete">
+      <el-form-item label="分类">
         <template>
           <el-autocomplete v-model="queryParams.classification" :fetch-suggestions="querySearch" placeholder="请输入分类" clearable @keyup.enter.native="handleQuery"></el-autocomplete>
         </template>
@@ -123,7 +123,9 @@
           <el-input v-model="form.url" placeholder="请输入网址" />
         </el-form-item>
         <el-form-item label="分类" prop="classification">
-          <el-input v-model="form.classification" placeholder="请输入分类" />
+          <template>
+          <el-autocomplete v-model="form.classification" :fetch-suggestions="querySearch" placeholder="请输入分类" clearable @keyup.enter.native="handleQuery"></el-autocomplete>
+        </template>
         </el-form-item>
         <el-form-item label="显示顺序" prop="orderNum">
           <el-input v-model="form.orderNum" placeholder="请输入显示顺序" />
@@ -217,6 +219,8 @@ export default {
         return [
           { "value": "工具"},
           { "value": "搜索" },
+          { "value": "教程" },
+          { "value": "开源项目" },
         ];
       },
 
