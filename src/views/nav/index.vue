@@ -50,11 +50,11 @@
     >
       <el-table-column label="名称" align="center" prop="name">
         <template slot-scope="scope">
-            <el-button  size="mini" type="text" @click="redirect(scope.row.url)" v-if="scope.row.isUrl == 0">{{ scope.row.name }}</el-button>
+            <el-button  type="text" @click="redirect(scope.row.url)" v-if="scope.row.isUrl == 0">{{ scope.row.name }}</el-button>
             <template v-if="scope.row.isUrl != 0">{{ scope.row.name }}</template>
         </template>
       </el-table-column>
-      <el-table-column label="图标" align="center" prop="icon"/>
+      <!-- <el-table-column label="图标" align="center" prop="icon"/> -->
       <el-table-column label="简介" align="center" prop="brief"/>
       <el-table-column label="显示顺序" align="center" prop="orderNum" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -96,9 +96,9 @@
         <!-- <el-form-item label=" 侧边栏一级名称" prop="enName">
           <el-input v-model="form.enName" placeholder="请输入 侧边栏一级名称" />
         </el-form-item> -->
-        <el-form-item label=" 图标" prop="icon">
+        <!-- <el-form-item label=" 图标" prop="icon">
           <el-input v-model="form.icon" placeholder="请输入图标" />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="简介" prop="brief">
           <el-input v-model="form.brief" placeholder="请输入简介" />
         </el-form-item>
