@@ -1,6 +1,6 @@
   // 定义一些公共的属性和方法
   // const kkIp = 'http://120.46.176.87:8012'
-  const kkIp = 'http://111.230.194.21:8012'
+  const kkIp = 'http://139.9.92.208:8012'
   const onlinePreview = kkIp + '/onlinePreview?url=';
   const downloadFile = kkIp + '/demo/'
 
