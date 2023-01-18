@@ -121,6 +121,13 @@
           <el-button
             size="mini"
             type="text"
+            icon="el-icon-download"
+            @click="download(scope.row.url)"
+            v-hasPermi="['files:review:edit']"
+          >下载</el-button>
+          <el-button
+            size="mini"
+            type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['files:review:remove']"
@@ -249,6 +256,9 @@ export default {
       console.log('上传失败')
       })
     },
+    download(url) {
+      window.open(url);
+    },
     async submitUpload() {
       await this.$refs.upload.submit();
       this.$refs.upload.clearFiles();
@@ -258,7 +268,7 @@ export default {
     },
 
     fileReview(url) {
-      window.open(variables.onlinePreview + url);
+      window.open(variables.onlinePreview + encodeURIComponent(Base64.encode(url)));
     },
 
     /** 查询文件预览列表 */
