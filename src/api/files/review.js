@@ -60,3 +60,11 @@ export function fileUpload(data) {
     data: data
   })
 }
+
+// 下载文件
+export function fileDownload(fileName, filePath) {
+  return request({
+    url: '/files/review/download?fileName=' + fileName + '&filePath=' + filePath,
+    method: 'get'
+  })
+}

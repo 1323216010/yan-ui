@@ -122,7 +122,7 @@
             size="mini"
             type="text"
             icon="el-icon-download"
-            @click="download(scope.row.url)"
+            @click="download(scope.row.url, scope.row.title, scope.row.type)"
             v-hasPermi="['files:review:edit']"
           >下载</el-button>
           <el-button
@@ -181,7 +181,7 @@
 <script>
 import variables from '@/utils/variables';
 import { getToken } from "@/utils/auth";
-import { listReview, getReview, delReview, addReview, updateReview, fileUpload} from "@/api/files/review";
+import { listReview, getReview, delReview, addReview, updateReview, fileUpload, fileDownload} from "@/api/files/review";
 import request from '@/utils/request'
 import { Base64 } from 'js-base64'
 
@@ -256,8 +256,9 @@ export default {
       console.log('上传失败')
       })
     },
-    download(url) {
-      window.open(url);
+    download(url, title, type) {
+      console.log(title)
+      window.open(url + '&title=' + title + '.' + type)
     },
     async submitUpload() {
       await this.$refs.upload.submit();
