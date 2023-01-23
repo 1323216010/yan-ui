@@ -244,7 +244,6 @@ export default {
   created() {
     this.getList();
     this.fileUpload = variables.fileUpload;
-    console.log(request.default.baseURL);
   },
   methods: {
     upload(param) {
@@ -257,7 +256,6 @@ export default {
       })
     },
     download(url, title, type) {
-      console.log(title)
       window.open(url + '&title=' + title + '.' + type)
     },
     async submitUpload() {
